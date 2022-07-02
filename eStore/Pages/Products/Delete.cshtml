@@ -1,0 +1,47 @@
+﻿@page
+@model eStore.Pages.Products.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+@section Scripts {
+    <script>
+        GetProductDetail(@ViewData["ProductId"]);
+        DeleteProduct(@ViewData["ProductId"]);
+    </script>
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Name</dt>
+        
+        <dd class="col-sm-10" id="product-name"></dd>
+        
+        <dt class="col-sm-2">Weight</dt>
+        
+        <dd class="col-sm-10" id="product-weight"></dd>
+        
+        <dt class="col-sm-2">Price</dt>
+        
+        <dd class="col-sm-10" id="product-price"></dd>
+        
+        <dt class="col-sm-2">Unit In Stock</dt>
+        
+        <dd class="col-sm-10" id="product-unit"></dd>
+        
+        <dt class="col-sm-2">Category</dt>
+        
+        <dd class="col-sm-10" id="product-category"></dd>
+    </dl>
+    
+    <form method="post">
+        <input value="Delete" class="btn btn-danger" id="btn-delete-product"/> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
