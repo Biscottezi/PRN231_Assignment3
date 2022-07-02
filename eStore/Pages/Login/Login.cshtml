@@ -1,0 +1,34 @@
+﻿@page "/"
+@model eStore.Pages.Login.Login
+
+<div class="container border" style="padding:20px; width: 400px">
+    <form method="post" asp-page="Login">
+        <h1 style="font-size: 30px" class="d-flex justify-content-center">Login</h1><br>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.Email"></label>
+            </div>
+            <div class="col-8">
+                <input type="text" asp-for="@Model.Email" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="@Model.Email"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.Password"></label>
+            </div>
+            <div class="col-8">
+                <input type="password" asp-for="@Model.Password" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="@Model.Password"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12 d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary" value="Login" />
+            </div>
+        </div>
+    </form>
+</div>

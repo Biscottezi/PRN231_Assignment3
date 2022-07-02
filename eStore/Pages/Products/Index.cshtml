@@ -1,0 +1,58 @@
+﻿@page
+@model eStore.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Scripts {
+    @if (ViewData["IsUser"] != null)
+    {
+        <script>
+            GetProductList(true);
+            SearchProduct(true);
+        </script>
+    }
+    else
+    {
+        <script>
+            GetProductList(false);
+            SearchProduct(false);
+        </script>
+    }
+}
+
+<h1>Product</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<div class="form-actions no-color">
+    <p>
+        Find by name:
+        <input type="text" name="SearchName" id="product-search-name"/><br/>
+        Find by price:
+        <input type="number" name="SearchPrice" min="0" id="product-search-price"/><br/>
+        <input value="Search" class="btn btn-primary" id="btn-search-product"/>
+        <a asp-page="./Index">Clear</a>
+    </p>
+</div>
+
+<p>
+    <a href="https://localhost:44372/Orders/Create" class="btn btn-primary">View Cart</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Weight</th>
+            <th>Unit Price</th>
+            <th>Unit In Stock</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

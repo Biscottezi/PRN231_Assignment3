@@ -1,0 +1,32 @@
+﻿@page
+@model eStore.Pages.Users.Details
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section Scripts {
+    <script>
+        GetUserDetail(@ViewData["UserId"]);
+    </script>
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        
+        <dd class="col-sm-10" id="user-id"></dd>
+        
+        <dt class="col-sm-2">Email</dt>
+        
+        <dd class="col-sm-10" id="user-email"></dd>
+        
+        <dt class="col-sm-2">Password</dt>
+        
+        <dd class="col-sm-10" id="user-password"></dd>
+    </dl>
+</div>

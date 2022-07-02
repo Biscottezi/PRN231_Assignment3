@@ -1,0 +1,57 @@
+@page
+@model eStore.Pages.Orders.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section Scripts
+{
+    <script>
+        GetOrderDetail(@ViewData["OrderId"]);
+    </script>
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Ordered Date</dt>
+        
+        <dd class="col-sm-10" id="order-orderedDate"></dd>
+        
+        <dt class="col-sm-2">Required Date</dt>
+        
+        <dd class="col-sm-10" id="order-requiredDate"></dd>
+        
+        <dt class="col-sm-2">Shipped Date</dt>
+        
+        <dd class="col-sm-10" id="order-shippedDate"></dd>
+        
+        <dt class="col-sm-2">Freight</dt>
+        
+        <dd class="col-sm-10" id="order-freight"></dd>
+        
+        <dt class="col-sm-2">User</dt>
+        
+        <dd class="col-sm-10" id="order-user"></dd>
+    </dl><br/>
+    <h4>Details</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+        </tr>
+        </thead>
+        
+        <tbody></tbody>
+    </table>
+</div>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>

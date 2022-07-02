@@ -1,0 +1,108 @@
+@page
+@model eStore.Pages.Orders.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@section Scripts
+{
+    @if (ViewData["IsUser"] != null)
+    {
+        <script>CreateOrder();</script>
+    }
+    else
+    {
+        <script>
+            GetUsers();
+            CreateOrder();
+        </script>
+    }
+    
+}
+
+<h1>Create</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (ViewData["IsUser"] != null)
+            {
+                <div class="form-group">
+                    <input type="hidden" asp-for="Order.UserId" class ="form-control" id="order-edit-user"/>
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label class="control-label">User</label>
+                    <select asp-for="Order.UserId" class ="form-control" id="order-edit-user"></select>
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="Order.OrderedDate" class="control-label">Ordered Date</label>
+                <input asp-for="Order.OrderedDate" class="form-control" id="order-edit-orderedDate"/>
+                <span asp-validation-for="Order.OrderedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.RequiredDate" class="control-label">Required Date</label>
+                <input asp-for="Order.RequiredDate" class="form-control" id="order-edit-requiredDate"/>
+                <span asp-validation-for="Order.RequiredDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.ShippedDate" class="control-label">Shipped Date</label>
+                <input asp-for="Order.ShippedDate" class="form-control" id="order-edit-shippedDate"/>
+                <span asp-validation-for="Order.ShippedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.Freight" class="control-label">Freight</label>
+                <input asp-for="Order.Freight" class="form-control" id="order-edit-freight"/>
+                <span asp-validation-for="Order.Freight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Discount</label>
+                <input type="number" min="0" class="form-control" id="order-edit-discount"/>
+            </div>
+            <div class="form-group">
+                <input value="Create" class="btn btn-primary" id="btn-create-order"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h4>Details</h4>
+<table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Total</th>
+    <th></th>
+    </thead>
+    
+    <tbody>
+    @if (Model.Cart != null)
+    {
+        @foreach(var item in Model.Cart)
+        {
+            <tr>
+                <td class="cart-item-id">@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td class="cart-item-quantity">@item.Quantity</td>
+                <td class="cart-item-price">@item.UnitPrice</td>
+                <td>@(item.Quantity * item.UnitPrice)</td>
+                <td><a asp-page="create" asp-page-handler="remove" asp-route-id="@item.ProductId">Remove</a></td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="./Products/Index">Back to List</a>
+</div>
+
