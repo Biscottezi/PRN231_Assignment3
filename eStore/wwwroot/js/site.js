@@ -424,7 +424,7 @@ function GetUsers() {
 }
 
 function GetStatistics() {
-    $(document).ready(() => {
+    $("#btn-report").click(() => {
         $.ajax({
             url: baseUrl + "orders/statistics",
             type: "get",
@@ -440,8 +440,8 @@ function GetStatistics() {
             success: (result, status, xhr) => {
                 $.each(result, (i, item) => {
                     let $row = '<tr>' +
-                        '<td>' + value["date"] + '</td>' +
-                        '<td>' + value["total"] + '</td>';
+                        '<td>' + item["date"] + '</td>' +
+                        '<td>' + item["total"] + '</td>';
                     $("tbody:last").append($row);
                 });
             }
